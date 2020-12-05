@@ -10,7 +10,7 @@ import UIKit
 class ListViewController: UITableViewController {
     
     
-    let itemArray = ["Find Mike", "Buy Eggs", "Destory Demogorgon"]
+    var itemArray = ["Find Mike", "Buy Eggs", "Destory Demogorgon"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,5 +51,27 @@ class ListViewController: UITableViewController {
         
         
     }
-
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add new Item in List", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            
+            itemArray.append(textField.text!)
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new item"
+            textField = alertTextField
+            
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
