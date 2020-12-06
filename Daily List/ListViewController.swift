@@ -18,6 +18,9 @@ class ListViewController: UITableViewController {
     }
     
     
+    // Tableview Datasource Methods :
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
         return itemArray.count
@@ -32,6 +35,9 @@ class ListViewController: UITableViewController {
         
         return cell
     }
+    
+    
+    // Tableview Delegate Methods :
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -51,6 +57,8 @@ class ListViewController: UITableViewController {
         
         
     }
+    
+    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
@@ -59,7 +67,8 @@ class ListViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
-            itemArray.append(textField.text!)
+            self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
         }
         
         alert.addTextField { (alertTextField) in
